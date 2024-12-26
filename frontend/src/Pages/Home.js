@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus, Download, Filter, Github, Youtube, Home } from 'lucide-react';
+import { backendHostName } from '../utils/constants';
 
 const ProjectDashboard = () => {
   const [projects, setProjects] = useState([]);
@@ -21,7 +22,7 @@ const ProjectDashboard = () => {
 
   // Fetch all projects from the backend API
   useEffect(() => {
-    fetch("http://localhost:5000/api/projects")
+    fetch(`${backendHostName}/api/projects`)
       .then(res => res.json())
       .then(data => {
         setProjects(data);
@@ -68,7 +69,7 @@ const ProjectDashboard = () => {
     e.preventDefault(); // Prevent full page reload
     setIsSubmitting(true); // Start submitting
 
-    fetch("http://localhost:5000/api/projects", {
+    fetch(`${backendHostName}/api/projects`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newProject)
