@@ -24,9 +24,6 @@ app.use(
 
 // ===== ROUTES =====
 
-// If you have user routes
-// app.use("/api/v1/users", require("./routes/userRoute"));
-
 // Project routes
 app.use("/api/projects", require("./routes/projectRoute"));
 
